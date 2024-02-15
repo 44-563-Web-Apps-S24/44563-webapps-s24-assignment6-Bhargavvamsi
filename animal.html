@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML Game Zone</title>
+    </head>
+ 
+<body>
+
+<h1>Animal game by Bhargav Vamsi Musuluri</h1>
+
+<form>
+    <label for="hidden_Animal" style="font-size: 100%; ">The hidden animal type: </label>
+    <input type="password" id="hidden_Animal" value="Chicken">
+    <br>
+
+    <label for="guess_Animal" style="font-size: 100%; ">Guess the animal: </label>
+    <input style="font-size: 100%; " type="text" id="guess_Animal">
+    <br>
+    <br><button type="button" onclick="checkAnimal()" style="font-size: 100%; font-family: cursive;">
+        Check the guess</button>
+</form>
+<br>
+<div id="result" style="font-size: 100%;"></div>
+<script>
+    let wrong = 0;
+    let correct = 0;
+    function checkAnimal() {
+        const hiddenAnimalInput = document.getElementById('hidden_Animal');
+        const guessAnimalInput = document.getElementById('guess_Animal');
+        const resultElement = document.getElementById('result');
+        if (hiddenAnimalInput.value === guessAnimalInput.value){
+            correct++;
+            alert("Ruff ruff");
+        } else {
+            wrong++;
+            alert("Grrrr");
+        }
+        resultElement.innerHTML = `<p>Correct guess: ${correct}, Wrong guess: ${wrong}</p>`; // Update result element checked by condition using if else
+        guessAnimalInput.value = '';
+        }
+</script>
+
+</body>
+</html> 
