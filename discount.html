@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Discount Calculations</title>
+</head>
+
+<body>
+    <label for="price">Enter price per:</label>
+    <input type="number" id="price" value="10"><br><br>
+
+    <label for="count">Enter the number of items:</label>
+    <input type="number" id="count" value="9"><br><br>
+
+    <label for="reduction">Enter the discount percent:</label>
+    <input type="number" id="reduction" value="5"><br><br>
+
+    <button onclick="discount()">Show total</button><br><br>
+
+    <div id="result"></div>
+
+    <script>
+        function discount() {
+            var price = document.getElementById('price').value;
+            var quantity = document.getElementById('count').value;
+            var discount = document.getElementById('reduction').value;
+            var myOutput = "";
+
+            for (var i = 0; i < 5; i++) {
+                var totalDiscount = (1 - ((Number(discount) + i) / 100));
+                var totalCost = price * quantity * totalDiscount;
+                myOutput += (Number(discount) + i) + "% is " + totalCost.toFixed(1) + "; ";
+            }
+
+            document.getElementById('result').innerHTML = "Totals are: " + myOutput;
+        }
+    </script>
+</body>
+
+</html>
