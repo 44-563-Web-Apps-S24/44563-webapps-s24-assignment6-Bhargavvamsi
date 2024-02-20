@@ -19,6 +19,21 @@
 
     <div id="result"></div>
 
+    <form>
+        <label for="sum">sum</label>
+        <input type="radio" id="op1" value="sum" name="operation" onclick="chooseOp()">
+        <br>
+
+        <label for="multiply">mult</label>
+        <input type="radio" id="op2" value="multiply" name="operation" onclick="chooseOp()">
+        <br>
+
+        <label for="exponent">exp</label>
+        <input type="radio" id="op3" value="exponent" name="operation" onclick="chooseOp()">
+    </form>
+
+    <div id="operationresult"></div>
+
     <script>
         function discount() {
             var price = document.getElementById('price').value;
@@ -33,6 +48,34 @@
             }
 
             document.getElementById('result').innerHTML = "Totals are: " + myOutput;
+        }
+
+        function chooseOp() {
+            var price = parseFloat(document.getElementById('price').value);
+            var discount = parseFloat(document.getElementById('reduction').value);
+            var resultText = "";
+
+            var selectedOption = document.querySelector('input[name="operation"]:checked').value;
+
+            switch (selectedOption) {
+                case "sum":
+                    var sum = price + discount;
+                    resultText = "Sum of " + price + " and " + discount + " is " + sum;
+                    break;
+                case "multiply":
+                    var product = price * discount;
+                    resultText = "Product of " + price + " and " + discount + " is " + product;
+                    break;
+                case "exponent":
+                    var exponentiation = Math.pow(price, discount);
+                    resultText = "Exponentiation of " + price + " to the power of " + discount + " is " + exponentiation;
+                    break;
+                default:
+                    resultText = "Invalid operation";
+                    break;
+            }
+
+            document.getElementById('operationresult').innerHTML = resultText;
         }
     </script>
 </body>
